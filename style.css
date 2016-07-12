@@ -4,10 +4,10 @@
 }
 
 .calculator {
-    width: 325px;
-    height: 500px;
-    margin: 100px auto;
-    background-color: #3299bb;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    #background-color: #3299bb;
 }
 
 .screen {
@@ -18,6 +18,7 @@
 
 div.buttons {
     height: 80%;
+    font-size: 0;
 }
 
 .buttons div{
@@ -25,7 +26,10 @@ div.buttons {
     height: 20%;
     display: inline-block;
     background-color: #E9E9E9;
+    line-height: 16vh;
+    font-size: initial;
 }
+
 
 #equal, #clearC {
     width: 50%;
@@ -37,7 +41,6 @@ div.arithButton {
 }
 
 div.clear {
-
 }
 
 #equal {
@@ -55,10 +58,13 @@ div.clear {
 /* FONT STYLING */
 div {
     font-family: arial, sans-serif;
-    font-size: 40px;
+    font-size: 12vh;
     color: #ffffff;
     text-align: center;
-    line-height: 70px;
+}
+
+div.buttons div {
+    font-size: 12vh;
 }
 
 div.numButton {
