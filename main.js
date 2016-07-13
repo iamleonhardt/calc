@@ -8,6 +8,9 @@ $(document).ready(function(){
         $('.screen').text(val);
 
         switch (val) {
+            case 'c':
+                my_calculator.clear();
+                break;
             case 'ce':
                 my_calculator.allClear();
                 break;
