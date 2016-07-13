@@ -69,4 +69,5 @@ div.buttons div {
 
 div.numButton {
     color: #59554E;
+    background-image: linear-gradient(to right, #eeeeee, #ffffff)
 }
