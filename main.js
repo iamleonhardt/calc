@@ -5,10 +5,16 @@ var my_calculator = new calculator(callback);
 $(document).ready(function(){
     $('.buttons div').click(function(){
         var val = $(this).text();
-        console.log('stuff');
-        console.log("val : " + val);
         $('.screen').text(val);
-        my_calculator.addItem(val);
+
+        switch (val) {
+            case 'ce':
+                my_calculator.allClear();
+                break;
+            default:
+                my_calculator.addItem(val);
+                break;
+        }
     });
 });
 
