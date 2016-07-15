@@ -32,6 +32,11 @@ div.buttons {
     background-color: #E9E9E9;
     line-height: 16vh;
     font-size: initial;
+    /* DISABLE TEXT SELECTION */
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */
 }
 
 
