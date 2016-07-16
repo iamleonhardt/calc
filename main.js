@@ -1,6 +1,10 @@
 // SET GLOBAL VARIABLES AND ARRAY
 var inputArray = [''];
 var arrayPos = 0;
+var num1 = '';
+var num2 = '';
+var op = '';
+var result = '';
 
 
 // DOC READY - 4 FUNCTIONS - .NUMBERS, .OPERATORS, .SPECIAL, .ANSWER BUTTONS
@@ -98,35 +102,60 @@ function addCE() {
 
 // FUNCTION FOR ANSWER BUTTON
 function assignNums(){
-    var num1 = inputArray[0];
-    var num2 = inputArray[2];
-    var op = inputArray [1];
+    num1 = parseFloat(inputArray[0]);
+    num2 = parseFloat(inputArray[2]);
+    op = inputArray [1];
     console.log("num1 = " + num1 + ", num2 = " + num2 + ", op = " + op);
 };
 
 
 function addAnswer() {
     // Check for Number and Operator
-    if (inputArray.length >= 2) {
+        // if (inputArray.length ==1 && inputArray[0] == ''){
+        //     $('.screen').text("0");
+        // }
+    while (inputArray.length >= 2) {
         // Check if Two numbers and Operator
-        if (inputArray.length >= 3) {  // add && != ''
+        if (inputArray.length >= 3 && inputArray[inputArray.length -1] != '') {
             assignNums();
         }
         else {
             inputArray[2] = inputArray[0];
             assignNums();
         }
-    }
-    else {
-        return;
+        doMath();
+        inputArray[0] = result;
+        console.log("inputArray[0] = " + inputArray[0]);
+        console.log("inputArray = " + inputArray);
+        inputArray.splice(1,2);
+        arrayPos -= 1;
+        console.log("inputArray = " + inputArray);
     }
 };
 
-
-    // var answer = num1 + op + num2;
-    // console.log(answer);
-
-
+// DO MATH
+function doMath(){
+    switch (op){
+        case "+":
+            result = num1+num2;
+            break;
+        case "-":
+            result = num1-num2;
+            break;
+        case "/":
+            if (num2 == 0){
+                result = "Error";
+                break;
+            }
+            else {result = num1/num2;}
+            break;
+        case "x":
+            result = num1*num2;
+            break;
+    }
+    console.log(result);
+    $('.screen').text(result);
+}
 
 // FUNCTION FOR SHOWING DISPLAY
 function displayResult() {
