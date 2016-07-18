@@ -16,6 +16,15 @@ function applyClicks() {
     $('.numButton').click(function () {
         addDigits($(this).text());
     });
+    // HOPING TO ADD KEYBOARD INPUT TO BUTTONS
+    // $('.numButton').keyup(function (){
+    //     if (event.keycode == )
+    // })
+    // DECIMAL #decimal
+    $('.decimal').click(function () {
+        addDec($(this).text());
+    });
+
     // OPERATORS .arithButton
     $('.arithButton').click(function () {
         addOps($(this).text());
@@ -35,6 +44,7 @@ function applyClicks() {
     });
 };
 
+
 // FUNCTION FOR ADDING DIGIT WHEN NUMBERS ARE PRESSED
 // Take in number and add it to the array. Should be concat to other numbers previously pressed in the 0 position
 function addDigits(inputDigit) {
@@ -47,11 +57,24 @@ function addDigits(inputDigit) {
 // FUNCTION FOR ADDING OPERATORS
 // increase arrayPos, set value, increase position, clear position
 function addOps(inputOps) {
-    if (inputArray[arrayPos] == '') {
+    if (arrayPos > 0 && inputArray[arrayPos] == '') {
         console.log("checking if inputArray[arrayPos] is empty string " + (inputArray[arrayPos] == ''));
+        inputArray.pop();
+        console.log(inputArray);
+        console.log("Array Position is : " + arrayPos);
+        arrayPos--;
+        console.log("Array Position is : " + arrayPos);
+        inputArray[arrayPos] = inputOps;
+        displayResult();
+        arrayPos++;
+        inputArray[arrayPos] = '';
+    }
+    else if (inputArray[arrayPos] == '') {
+        console.log(inputArray);
         return;
     }
-    else {
+    else
+    {
         arrayPos++;
         inputArray[arrayPos] = inputOps;
         // SHOW IN DISPLAY
@@ -61,6 +84,18 @@ function addOps(inputOps) {
         console.log(inputArray);
     }
 }
+
+//FUNCTION FOR ADDING DECIMALS
+function addDec(inputDigit) {
+    var posIndexString = inputArray[arrayPos];
+    console.log(posIndexString);
+    if (posIndexString.indexOf(".") == -1) {
+        inputArray[arrayPos] += inputDigit;
+        console.log(inputArray);
+        displayResult();
+    }
+}
+
 
 // FUNCTION FOR ADDING CLEARS
 // Clear
@@ -101,7 +136,7 @@ function addCE() {
 }
 
 // FUNCTION FOR ANSWER BUTTON
-function assignNums(){
+function assignNums() {
     num1 = parseFloat(inputArray[0]);
     num2 = parseFloat(inputArray[2]);
     op = inputArray [1];
@@ -111,12 +146,12 @@ function assignNums(){
 
 function addAnswer() {
     // Check for Number and Operator
-        // if (inputArray.length ==1 && inputArray[0] == ''){
-        //     $('.screen').text("0");
-        // }
+    if (inputArray.length == 1 && inputArray[0] == '') {
+        $('.screen').text("0");
+    }
     while (inputArray.length >= 2) {
         // Check if Two numbers and Operator
-        if (inputArray.length >= 3 && inputArray[inputArray.length -1] != '') {
+        if (inputArray.length >= 3 && inputArray[inputArray.length - 1] != '') {
             assignNums();
         }
         else {
@@ -127,30 +162,32 @@ function addAnswer() {
         inputArray[0] = result;
         console.log("inputArray[0] = " + inputArray[0]);
         console.log("inputArray = " + inputArray);
-        inputArray.splice(1,2);
+        inputArray.splice(1, 2);
         arrayPos -= 1;
         console.log("inputArray = " + inputArray);
     }
 };
 
 // DO MATH
-function doMath(){
-    switch (op){
+function doMath() {
+    switch (op) {
         case "+":
-            result = num1+num2;
+            result = num1 + num2;
             break;
         case "-":
-            result = num1-num2;
+            result = num1 - num2;
             break;
         case "/":
-            if (num2 == 0){
+            if (num2 == 0) {
                 result = "Error";
                 break;
             }
-            else {result = num1/num2;}
+            else {
+                result = num1 / num2;
+            }
             break;
         case "x":
-            result = num1*num2;
+            result = num1 * num2;
             break;
     }
     console.log(result);
