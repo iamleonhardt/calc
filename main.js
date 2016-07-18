@@ -17,9 +17,9 @@ function applyClicks() {
         addDigits($(this).text());
     });
     // HOPING TO ADD KEYBOARD INPUT TO BUTTONS
-    // $('.numButton').keyup(function (){
-    //     if (event.keycode == )
-    // })
+    $('.numButton').keyup(function () {
+        addDigits(String.fromCharCode($(this)));
+    });
     // DECIMAL #decimal
     $('.decimal').click(function () {
         addDec($(this).text());
@@ -37,7 +37,6 @@ function applyClicks() {
     $('#clearC').click(function () {
         addC();
     });
-
     // ANSWER #equal
     $('#equal').click(function () {
         addAnswer();
@@ -73,8 +72,7 @@ function addOps(inputOps) {
         console.log(inputArray);
         return;
     }
-    else
-    {
+    else {
         arrayPos++;
         inputArray[arrayPos] = inputOps;
         // SHOW IN DISPLAY
@@ -164,23 +162,22 @@ function addAnswer() {
             assignNums();
         }
         doMath();
-        if (inputArray.length == 3){
-            inputArray[0] = result;
-            console.log("inputArray[0] = " + inputArray[0]);
-            console.log("inputArray = " + inputArray);
-            hold = inputArray[1] + inputArray[2];
-            inputArray.splice(2,1);
-            arrayPos -= 1;
-            console.log("inputArray = " + inputArray);
-
-        }
-        else {inputArray[0] = result;
-            console.log("inputArray[0] = " + inputArray[0]);
-            console.log("inputArray = " + inputArray);
-            inputArray.splice(1, 2);
-            arrayPos -= 1;
-            console.log("inputArray = " + inputArray);}
-
+        // if (inputArray.length == 3){
+        //     inputArray[0] = result;
+        //     console.log("inputArray[0] = " + inputArray[0]);
+        //     console.log("inputArray = " + inputArray);
+        //     hold = inputArray[1] + inputArray[2];
+        //     inputArray.splice(2,1);
+        //     arrayPos -= 1;
+        //     console.log("inputArray = " + inputArray);
+        // }
+        // else {
+        inputArray[0] = result;
+        console.log("inputArray[0] = " + inputArray[0]);
+        console.log("inputArray = " + inputArray);
+        inputArray.splice(1, 2);
+        arrayPos -= 1;
+        console.log("inputArray = " + inputArray);
     }
 };
 
