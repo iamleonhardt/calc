@@ -67,55 +67,55 @@ function addDigits(inputDigit) {
 // FUNCTION FOR ADDING OPERATORS
 // increase arrayPos, set value, increase position, clear position
 //Create function called addOps that takes in the input from the operator button
-function addOps(inputOps) {
+
     // An if statement that checks if the array position is greater than 0 AND whether it contains an empty string. Its checking to see if there was an operator in the previous array position and replacing the old operator with the new
-    if (arrayPos > 0 && inputArray[arrayPos] == '') {
+
         // Console log to test if the array position is an empty string
-        console.log("checking if inputArray[arrayPos] is empty string " + (inputArray[arrayPos] == ''));
+
         // Pop out last position of the array - removes the previous operator so the new one can replace it.
-        inputArray.pop();
+
         // Console log to check array to verify if it removed previous
-        console.log("Input Array is : " + inputArray + ", Array Position is : " + arrayPos);
+
         // Decrement array position
-        arrayPos--;
+
         // Console log to check new position
-        console.log("Array Position is : " + arrayPos);
+
         // Put the newly entered input operator into the current array position
-        inputArray[arrayPos] = inputOps;
+
         // Run the function called displayResult to add the result to the screen
-        displayResult();
+
         // Increment the Array position so that operators dont stack
-        arrayPos++;
+
         // Add empty string to current array position so that its not undefined when a number is added
-        inputArray[arrayPos] = '';
+
     //Close the if
-    }
+
     // Create an else if statement to check if the array position is an empty string (if its an empty string we know its in the 0 position because the first "if" didnt catch it) 
-    else if (inputArray[arrayPos] == '') {
+
         // Console log to check the array
-        console.log(inputArray);
+
         // Return to kick out because we dont want an operator in the 0 position
-        return;
+
     // Close the else if    
-    }
+
     // Create an else statement that will add an operator in the next array position after a number is in the current array position        
-    else {
+
         // Increment to the next array position so it doesnt overwrite number
-        arrayPos++;
+
         // Assign the newly inputed operator into the current array position
-        inputArray[arrayPos] = inputOps;
+
         // Run function called displayResult to add the result to the screen
-        displayResult();
+
         // Increment the array position
-        arrayPos++;
+
         // Set the current array position to be an empty string
-        inputArray[arrayPos] = '';
+
         // Console log the array to validate
-        console.log(inputArray);
+
     // Close the else statement    
-    }
+
 //Close the function
-}
+
 // Continue being excellent!
 //------------------- LFZ End
 
