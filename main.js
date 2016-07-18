@@ -145,10 +145,15 @@ function assignNums() {
 
 
 function addAnswer() {
+    // var hold = "";
     // Check for Number and Operator
     if (inputArray.length == 1 && inputArray[0] == '') {
         $('.screen').text("0");
     }
+    // Trying to use var hold to add operator when you hit =
+    // if (inputArray.length == 1 && inputArray[0] != NaN) {
+    //
+    // }
     while (inputArray.length >= 2) {
         // Check if Two numbers and Operator
         if (inputArray.length >= 3 && inputArray[inputArray.length - 1] != '') {
@@ -159,12 +164,23 @@ function addAnswer() {
             assignNums();
         }
         doMath();
-        inputArray[0] = result;
-        console.log("inputArray[0] = " + inputArray[0]);
-        console.log("inputArray = " + inputArray);
-        inputArray.splice(1, 2);
-        arrayPos -= 1;
-        console.log("inputArray = " + inputArray);
+        if (inputArray.length == 3){
+            inputArray[0] = result;
+            console.log("inputArray[0] = " + inputArray[0]);
+            console.log("inputArray = " + inputArray);
+            hold = inputArray[1] + inputArray[2];
+            inputArray.splice(2,1);
+            arrayPos -= 1;
+            console.log("inputArray = " + inputArray);
+
+        }
+        else {inputArray[0] = result;
+            console.log("inputArray[0] = " + inputArray[0]);
+            console.log("inputArray = " + inputArray);
+            inputArray.splice(1, 2);
+            arrayPos -= 1;
+            console.log("inputArray = " + inputArray);}
+
     }
 };
 
