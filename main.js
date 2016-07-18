@@ -16,10 +16,9 @@ function applyClicks() {
     $('.numButton').click(function () {
         addDigits($(this).text());
     });
-    // HOPING TO ADD KEYBOARD INPUT TO BUTTONS
-    $('.numButton').keyup(function () {
-        addDigits(String.fromCharCode($(this)));
-    });
+    // KEYBOARD INPUT TO BUTTONS
+    $('body').keypress(keyboardPressed);
+    
     // DECIMAL #decimal
     $('.decimal').click(function () {
         addDec($(this).text());
@@ -42,6 +41,15 @@ function applyClicks() {
         addAnswer();
     });
 };
+
+// Function for adding keyboard press to buttons
+function keyboardPressed(event){
+    var keycode = event.which;
+    var letter = String.fromCharCode(keycode);
+    console.log("Keycode is : " + keycode);
+    var element = $("div[data-key="+letter+"]");
+    element.click();
+}
 
 
 // FUNCTION FOR ADDING DIGIT WHEN NUMBERS ARE PRESSED
@@ -204,7 +212,7 @@ function addAnswer() {
         console.log("inputArray[0] = " + inputArray[0]);
         console.log("inputArray = " + inputArray);
         inputArray.splice(1, 2);
-        arrayPos -= 1;
+        arrayPos -= 2;
         console.log("inputArray = " + inputArray);
     }
 };
