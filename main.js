@@ -62,62 +62,37 @@ function addDigits(inputDigit) {
 }
 
 
-
-//----------------- LFZ Start
 // FUNCTION FOR ADDING OPERATORS
 // increase arrayPos, set value, increase position, clear position
-//Create function called addOps that takes in the input from the operator button
+function addOps(inputOps) {
+    if (arrayPos > 0 && inputArray[arrayPos] == '') {
+        console.log("checking if inputArray[arrayPos] is empty string " + (inputArray[arrayPos] == ''));
+        inputArray.pop();
+        console.log(inputArray);
+        console.log("Array Position is : " + arrayPos);
+        arrayPos--;
+        console.log("Array Position is : " + arrayPos);
+        inputArray[arrayPos] = inputOps;
+        displayResult();
+        arrayPos++;
+        inputArray[arrayPos] = '';
+    }
+    else if (inputArray[arrayPos] == '') {
+        console.log(inputArray);
+        return;
+    }
+    else
+    {
+        arrayPos++;
+        inputArray[arrayPos] = inputOps;
+        // SHOW IN DISPLAY
+        displayResult();
+        arrayPos++;
+        inputArray[arrayPos] = '';
+        console.log(inputArray);
+    }
+}
 
-    // An if statement that checks if the array position is greater than 0 AND whether it contains an empty string. Its checking to see if there was an operator in the previous array position and replacing the old operator with the new
-
-        // Console log to test if the array position is an empty string
-
-        // Pop out last position of the array - removes the previous operator so the new one can replace it.
-
-        // Console log to check array to verify if it removed previous
-
-        // Decrement array position
-
-        // Console log to check new position
-
-        // Put the newly entered input operator into the current array position
-
-        // Run the function called displayResult to add the result to the screen
-
-        // Increment the Array position so that operators dont stack
-
-        // Add empty string to current array position so that its not undefined when a number is added
-
-    //Close the if
-
-    // Create an else if statement to check if the array position is an empty string (if its an empty string we know its in the 0 position because the first "if" didnt catch it) 
-
-        // Console log to check the array
-
-        // Return to kick out because we dont want an operator in the 0 position
-
-    // Close the else if    
-
-    // Create an else statement that will add an operator in the next array position after a number is in the current array position        
-
-        // Increment to the next array position so it doesnt overwrite number
-
-        // Assign the newly inputed operator into the current array position
-
-        // Run function called displayResult to add the result to the screen
-
-        // Increment the array position
-
-        // Set the current array position to be an empty string
-
-        // Console log the array to validate
-
-    // Close the else statement    
-
-//Close the function
-
-// Continue being excellent!
-//------------------- LFZ End
 
 //FUNCTION FOR ADDING DECIMALS
 function addDec(inputDigit) {
