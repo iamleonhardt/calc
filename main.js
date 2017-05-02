@@ -44,10 +44,25 @@ function applyClicks() {
 
 // Function for adding keyboard press to buttons
 function keyboardPressed(event){
-    var keycode = event.which;
-    var letter = String.fromCharCode(keycode);
-    console.log("Keycode is : " + keycode);
-    var element = $("div[data-key="+letter+"]");
+    var eWhich = event.which;
+    console.log('the event.which is : ', event.which);
+    var character = String.fromCharCode(eWhich);
+    console.log('character is : ', character);
+    // if(event.which === 13){
+    // character = '=';
+    // }
+
+    switch (event.which){
+        case 13:
+            character = '=';
+            break;
+        case 42:
+            character = 'x';
+            break;
+    }
+
+    var element = $("div[data-key='"+character+"']");
+    console.log('element is : ', element);
     element.click();
 }
 
